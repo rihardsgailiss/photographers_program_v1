@@ -1,0 +1,91 @@
+.trusted {
+  /* Figma: y=1680, width 1904 (8px side margins) */
+  width: 1904px;
+  margin: 8px auto 0;
+}
+
+.trusted__card {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px 32px;
+  border-radius: var(--radius-md);
+  background: var(--white);
+}
+
+.trusted__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.trusted__headline {
+  flex: 1 0 0;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--dark);
+}
+
+.trusted__trustpilot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.trusted__tpText {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.035px;
+  text-transform: uppercase;
+  color: var(--dark);
+}
+
+.trusted__divider {
+  height: 1px;
+  width: 100%;
+  background: rgba(26, 34, 46, 0.1);
+}
+
+.trusted__logos {
+  width: 100%;
+  overflow: hidden;
+  /* fade both edges (design has 80px white gradients at each side) */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 80px, #000 calc(100% - 80px), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 80px, #000 calc(100% - 80px), transparent);
+}
+
+.trusted__marquee {
+  display: flex;
+  width: max-content;
+  animation: trustedMarquee 45s linear infinite;
+}
+
+/* Each identical group carries a trailing gap so the two tile seamlessly. */
+.trusted__logoGroup {
+  display: flex;
+  align-items: center;
+  gap: 105px;
+  padding-right: 105px;
+  flex-shrink: 0;
+}
+
+.trusted__logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+@keyframes trustedMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trusted__marquee { animation: none; }
+}

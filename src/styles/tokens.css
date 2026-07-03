@@ -1,0 +1,26 @@
+:root {
+  /* Fonts */
+  --font-display: 'Sora', system-ui, sans-serif;   /* headings */
+  --font-sans: 'Google Sans Flex', system-ui, sans-serif; /* body / UI */
+  --font-mono: 'Google Sans Code', ui-monospace, monospace;
+
+  /* Colors (from Figma) */
+  --yellow: #ffc600;
+  --dark: #1a222e;          /* Primary colors / Dark */
+  --ink: #1f1f1f;           /* icon default */
+  --black: #000000;
+  --white: #ffffff;
+  --text-muted: rgba(26, 34, 46, 0.65);
+  --btn-secondary: #f1f3f3;
+  --page-bg: #f1f1ef;
+  --hairline: rgba(26, 34, 46, 0.12);
+  --header-scrolled-bg: rgba(255, 255, 255, 0.8);
+
+  /* Layout */
+  --zoom: 1; /* fit-to-width scale factor, set by useFitToDesign */
+  --design-width: 1920px;
+  --gutter: 40px;
+  --header-h: 80px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+}

@@ -1,0 +1,97 @@
+.ct {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  width: 1840px;
+  margin: 400px auto 0;
+}
+
+.ct__group {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+
+.ct__headRow {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  /* Sticks below the site header while scrolling through its own group,
+     then releases when the group's last row scrolls past. */
+  position: sticky;
+  top: var(--header-h);
+  z-index: 10;
+  padding-top: 24px;
+  padding-bottom: 32px;
+  background: var(--page-bg);
+  border-bottom: 1px solid rgba(26, 34, 46, 0.2);
+}
+.ct__headCell {
+  flex: 1 0 0;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.12px;
+  color: var(--dark);
+}
+
+.ct__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.ct__row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.ct__cell {
+  display: flex;
+  align-items: center;
+  flex: 1 0 0;
+  min-width: 0;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(26, 34, 46, 0.2);
+}
+
+.ct__feat {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--dark);
+}
+.ct__value {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--text-muted);
+}
+.ct__valueRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.ct__check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border: 1px solid rgba(26, 34, 46, 0.2);
+  border-radius: 9999px;
+  color: var(--ink);
+}
+.ct__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--text-muted);
+}

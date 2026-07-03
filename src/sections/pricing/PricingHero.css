@@ -1,0 +1,152 @@
+.pricingHero {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  width: 1840px;
+  margin: 0 auto;
+  padding-top: 176px;
+}
+
+/* Billing toggle */
+.pricingToggle {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  border-radius: 9999px;
+  background: var(--white);
+  animation: fadeUp 0.8s var(--ease-out-expo) 0.1s both;
+}
+.pricingToggle__opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 24px;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.035px;
+  color: var(--dark);
+  transition: background-color 0.2s ease;
+}
+.pricingToggle__opt.is-active { background: var(--btn-secondary); }
+.pricingToggle__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: #ffe586;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.03px;
+  text-transform: uppercase;
+  color: var(--dark);
+}
+
+/* Cards */
+.pricingHero__cards {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+  width: 100%;
+}
+
+.planCard {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  flex: 1 1 0;
+  height: 551px;
+  padding: 32px;
+  border-radius: 16px;
+  overflow: hidden;
+  animation: fadeUp 0.85s var(--ease-out-expo) both;
+}
+.pricingHero__cards .planCard:nth-child(1) { animation-delay: 0.2s; }
+.pricingHero__cards .planCard:nth-child(2) { animation-delay: 0.32s; }
+.pricingHero__cards .planCard:nth-child(3) { animation-delay: 0.44s; }
+.planCard--white { background: var(--white); }
+.planCard--highlight { background: #ffe586; }
+.planCard--enterprise { justify-content: space-between; }
+
+.planCard__head {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(26, 34, 46, 0.2);
+}
+.planCard--enterprise .planCard__head {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.planCard__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.planCard__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.12px;
+  color: var(--dark);
+}
+.planCard__desc {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--text-muted);
+}
+
+.planCard__price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  color: var(--dark);
+}
+.planCard__priceValue { font-size: 32px; line-height: 48px; letter-spacing: -0.08px; }
+.planCard__priceUnit { font-size: 16px; line-height: 24px; letter-spacing: -0.04px; }
+
+.planCard__features {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.planCard__feature {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.planCard__check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border: 1px solid rgba(26, 34, 46, 0.2);
+  border-radius: 9999px;
+  color: var(--ink);
+}
+.planCard__featureText {
+  flex: 1 0 0;
+  min-width: 0;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--text-muted);
+}
+
+.planCard__cta {
+  width: 100%;
+  margin-top: auto;
+}
+.planCard--enterprise .planCard__cta { margin-top: 0; }

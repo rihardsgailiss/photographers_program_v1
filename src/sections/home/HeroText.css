@@ -1,0 +1,46 @@
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: flex-start;
+  /* Figma: Hero text at x=195, y=160 */
+  padding: 160px 40px 0 195px;
+}
+
+.heroText__text {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.heroText__heading {
+  margin: 0;
+  width: 1066px;
+  overflow: hidden; /* mask for the rise-in reveal */
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 72px;
+  color: var(--black);
+}
+.heroText__reveal {
+  display: block;
+  animation: maskRise 1.1s var(--ease-out-expo) 0.15s both;
+}
+
+.heroText__desc {
+  width: 757px;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--text-muted);
+  animation: fadeUp 0.9s var(--ease-out-expo) 0.55s both;
+}
+
+.heroText__cta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  animation: fadeUp 0.9s var(--ease-out-expo) 0.7s both;
+}

@@ -1,0 +1,61 @@
+@import './fonts.css';
+@import './tokens.css';
+@import './ui.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--dark);
+  background: var(--page-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0; /* reset UA default button padding; components set their own */
+  color: inherit;
+}
+
+p {
+  margin: 0;
+}
+
+/* Fixed 1920 design canvas, centered. Built 1:1 for desktop; on narrower
+   windows the canvas is horizontally scrollable (desktop-only scope). */
+.page {
+  width: var(--design-width);
+  margin: 0 auto;
+  position: relative;
+  background: var(--page-bg);
+}
+
+/* Standard content container: 40px side gutters -> 1840 inner width */
+.container {
+  width: 100%;
+  padding-inline: var(--gutter);
+}

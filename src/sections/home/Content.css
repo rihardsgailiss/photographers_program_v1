@@ -1,0 +1,230 @@
+.content {
+  position: relative;
+  width: 100%;
+  margin-top: 240px;
+}
+
+.content__sticky {
+  position: sticky;
+  top: 0;
+  /* Divide by --zoom so it still fills the viewport after the page is zoomed. */
+  height: calc(100vh / var(--zoom, 1));
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content__viewport {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  flex-shrink: 0;
+}
+
+/* Card track — starts at x=504, y=222 (Figma) */
+.content__track {
+  position: absolute;
+  left: 504px;
+  top: 222px;
+  display: flex;
+  gap: 170px;
+  align-items: flex-start;
+  will-change: transform;
+}
+
+.ccard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 912px;
+  flex-shrink: 0;
+}
+
+.ccard__container {
+  position: relative;
+  width: 912px;
+  height: 513px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.ccard__flat {
+  width: 912px;
+  height: 513px;
+  object-fit: cover;
+}
+
+.ccard__media {
+  position: absolute;
+  inset: 0;
+}
+.ccard__media--white { background: var(--white); }
+.ccard__media--grey { background: var(--btn-secondary); }
+
+/* Card 2 — floor plan centered */
+.ccard__floorplan {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 447px;
+  height: 348.5px;
+  object-fit: contain;
+}
+
+/* Cards 3 & 4 — exact crop from Figma */
+.ccard__cover {
+  position: absolute;
+  max-width: none;
+  object-fit: cover;
+}
+
+/* Card 5 — website screenshot centered with border */
+.ccard__website {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 730px;
+  height: 375px;
+  object-fit: cover;
+  border: 2px solid var(--btn-secondary);
+  border-radius: 8px;
+}
+
+/* Arrow button bottom-right */
+.ccard__arrow {
+  position: absolute;
+  right: 32px;
+  bottom: 32px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--btn-secondary);
+  border-radius: 8px;
+  color: var(--ink);
+  transition: filter 0.15s ease;
+}
+.ccard__arrow:hover { filter: brightness(0.95); }
+
+.ccard__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 602px;
+}
+.ccard__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.12px;
+  color: var(--dark);
+}
+.ccard__desc {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--text-muted);
+}
+
+/* Progress slider (Figma 1:314) — left 504, bottom 56, width 912 */
+.content__slider {
+  position: absolute;
+  left: 504px;
+  bottom: 56px;
+  width: 912px;
+  display: flex;
+  align-items: center;
+}
+.content__sliderActive {
+  position: absolute;
+  left: 0;
+  z-index: 2;
+  width: 120px;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--yellow);
+  will-change: transform;
+}
+.content__sliderFill {
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(26, 34, 46, 0.2);
+}
+
+/* ---- Card 6: Instagram collage mockup ---- */
+.ig {
+  position: absolute;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--dark);
+}
+.ig--side { width: 310px; height: 310px; top: 156px; }
+.ig--left { left: -58px; }
+.ig--right { left: 660px; }
+.ig--side img {
+  width: 574px;
+  height: 431px;
+  max-width: none;
+  object-fit: cover;
+  transform: translate(-132px, -60px);
+}
+
+.ig--center {
+  left: 276px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 360px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  box-shadow: 0 24px 48px rgba(26, 34, 46, 0.18);
+}
+.ig__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  background: var(--btn-secondary);
+}
+.ig__logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 32px;
+  background: var(--yellow);
+  flex-shrink: 0;
+}
+.ig__user { display: flex; flex-direction: column; line-height: 1.2; }
+.ig__user b { font-family: var(--font-sans); font-weight: 700; font-size: 10px; color: var(--dark); }
+.ig__user i { font-style: normal; font-family: var(--font-sans); font-size: 8.5px; color: var(--dark); }
+.ig__post {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  overflow: hidden;
+  background: var(--dark);
+}
+.ig__post img {
+  position: absolute;
+  width: 667px;
+  height: 500px;
+  max-width: none;
+  left: -153px;
+  top: -70px;
+  object-fit: cover;
+}
+.ig__banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--btn-secondary);
+}
+.ig__bookmark { margin-left: auto; }
