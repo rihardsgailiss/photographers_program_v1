@@ -16,10 +16,11 @@
   --hairline: rgba(26, 34, 46, 0.12);
   --header-scrolled-bg: rgba(255, 255, 255, 0.8);
 
-  /* Layout */
-  --zoom: 1; /* fit-to-width scale factor, set by useFitToDesign */
-  --design-width: 1920px;
-  --gutter: 40px;
+  /* Layout — responsive: constant sizes, fluid widths, capped + centered */
+  --content-max: 1920px;   /* outer cap for near-full-bleed sections */
+  --inner-max: 1840px;     /* gutter'd content width at the cap */
+  --gutter: clamp(24px, 4vw, 40px); /* ~40 across desktop, shrinks only when very narrow */
+  --edge: 8px;             /* near-full-bleed side inset (matches 1904/1920 design) */
   --header-h: 80px;
   --radius-sm: 8px;
   --radius-md: 16px;

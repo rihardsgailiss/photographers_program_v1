@@ -3,9 +3,10 @@
   flex-direction: column;
   gap: 40px;
   align-items: center;
-  width: 1840px;
+  width: 100%;
+  max-width: var(--content-max);
   margin: 0 auto;
-  padding-top: 176px;
+  padding: 176px var(--gutter) 0;
 }
 
 /* Billing toggle */
@@ -48,6 +49,7 @@
 /* Cards */
 .pricingHero__cards {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   align-items: stretch;
   width: 100%;
@@ -57,8 +59,9 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  flex: 1 1 0;
-  height: 551px;
+  flex: 1 1 300px; /* 3-up on desktop; wraps when tight */
+  min-width: 300px;
+  min-height: 551px;
   padding: 32px;
   border-radius: 16px;
   overflow: hidden;

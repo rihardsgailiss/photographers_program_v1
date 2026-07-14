@@ -36,10 +36,9 @@ const CARDS = [
   },
 ]
 
-/* Row = 6 cards (912) + 5 gaps (170) = 6322px. Visible span inside the 1920
-   canvas from the 504px left inset to the 40px right gutter = 1376px. */
-const MAX_TRANSLATE = 6322 - (1920 - 504 - 40) // 4946
-const SLIDER_TRAVEL = 912 - 120 // active bar travel
+/* Cards stay a constant 912px wide; how far the track must travel and how far the
+   slider bar moves are measured at runtime (responsive to viewport width). */
+const SLIDER_BAR = 120 // active bar width (px)
 
 function CardMedia({ card }) {
   switch (card.id) {
@@ -105,31 +104,55 @@ function CardMedia({ card }) {
 
 export default function Content({ previewProgress = null }) {
   const sectionRef = useRef(null)
+  const railRef = useRef(null)
+  const trackRef = useRef(null)
+  const sliderRef = useRef(null)
   const [progress, setProgress] = useState(previewProgress ?? 0)
+  // How far the track/slider travel — measured from the live layout (responsive).
+  const [maxTranslate, setMaxTranslate] = useState(0)
+  const [sliderTravel, setSliderTravel] = useState(0)
   const isPreview = previewProgress != null
 
   useEffect(() => {
-    if (isPreview) return
     let raf = 0
+
+    const measure = () => {
+      const track = trackRef.current
+      const rail = railRef.current
+      const slider = sliderRef.current
+      if (track && rail) {
+        setMaxTranslate(Math.max(0, track.scrollWidth - rail.clientWidth))
+      }
+      if (slider) {
+        setSliderTravel(Math.max(0, slider.clientWidth - SLIDER_BAR))
+      }
+    }
+
     const update = () => {
       raf = 0
       const el = sectionRef.current
-      if (!el) return
+      if (!el || isPreview) return
       const rect = el.getBoundingClientRect()
-      // rect.height/top are post-zoom (real viewport px) — keeps math zoom-safe.
       const scrollable = rect.height - window.innerHeight
       const p = scrollable > 0 ? Math.min(1, Math.max(0, -rect.top / scrollable)) : 0
       setProgress(p)
     }
+
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update)
     }
+    const onResize = () => {
+      measure()
+      onScroll()
+    }
+
+    measure()
     update()
     window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
+    window.addEventListener('resize', onResize)
     return () => {
       window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
+      window.removeEventListener('resize', onResize)
       if (raf) cancelAnimationFrame(raf)
     }
   }, [isPreview])
@@ -138,18 +161,16 @@ export default function Content({ previewProgress = null }) {
     <section
       className="content"
       ref={sectionRef}
-      style={{
-        height: isPreview
-          ? 'calc(100vh / var(--zoom, 1))'
-          : `calc(100vh / var(--zoom, 1) + ${MAX_TRANSLATE}px)`,
-      }}
+      style={{ height: isPreview ? '100vh' : `calc(100vh + ${maxTranslate}px)` }}
     >
       <div className="content__sticky">
         <div className="content__viewport">
-          <div
-            className="content__track"
-            style={{ transform: `translateX(${-progress * MAX_TRANSLATE}px)` }}
-          >
+          <div className="content__rail" ref={railRef}>
+            <div
+              className="content__track"
+              ref={trackRef}
+              style={{ transform: `translateX(${-progress * maxTranslate}px)` }}
+            >
             {CARDS.map((card) => (
               <article className="ccard" key={card.id}>
                 <div className="ccard__container">
@@ -166,12 +187,13 @@ export default function Content({ previewProgress = null }) {
                 </div>
               </article>
             ))}
+            </div>
           </div>
 
-          <div className="content__slider">
+          <div className="content__slider" ref={sliderRef}>
             <div
               className="content__sliderActive"
-              style={{ transform: `translateX(${progress * SLIDER_TRAVEL}px)` }}
+              style={{ transform: `translateX(${progress * sliderTravel}px)` }}
             />
             <div className="content__sliderFill" />
           </div>

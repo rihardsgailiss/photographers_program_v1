@@ -1,25 +1,29 @@
 .ctaBand {
-  width: 1904px;
+  width: 100%;
+  max-width: var(--content-max);
   margin: 400px auto 0;
+  padding-inline: var(--edge);
 }
 
 .ctaBand__band {
-  position: relative;
-  height: 400px;
+  min-height: 400px;
   border-radius: 12px;
   background: #ffe586;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(40px, 6vw, 80px) clamp(24px, 5vw, 120px);
 }
 
 .ctaBand__card {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 1530px;
+  width: 100%;
+  max-width: 1530px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
 }
 
 .ctaBand__copy {
@@ -30,7 +34,8 @@
 }
 .ctaBand__heading {
   margin: 0;
-  width: 757px;
+  max-width: 757px;
+  width: 100%;
   font-family: var(--font-display);
   font-weight: 400;
   font-size: 32px;

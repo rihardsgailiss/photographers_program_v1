@@ -1,14 +1,17 @@
 .heroImage {
-  /* Figma: x=8, y=592, 1904 x 1080 */
-  width: 1904px;
+  /* Figma: x=8, y=592, 1904 x 1080 — fluid, capped + centered */
+  width: 100%;
+  max-width: var(--content-max);
   margin: 108px auto 0;
+  padding-inline: var(--edge);
   transform-origin: center top;
   animation: zoomFadeIn 1.3s var(--ease-out-expo) 0.4s both;
 }
 
 .heroImage img {
-  width: 1904px;
-  height: 1080px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1904 / 1080; /* photo scales with width, keeps proportions */
   object-fit: cover;
   border-radius: 24px;
 }

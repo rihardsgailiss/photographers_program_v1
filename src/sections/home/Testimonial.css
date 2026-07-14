@@ -1,5 +1,5 @@
 .testi {
-  padding: 320px 40px 0;
+  padding: 320px var(--gutter) 0;
 }
 
 .testi__quotes {
@@ -7,7 +7,8 @@
   flex-direction: column;
   gap: 56px;
   align-items: flex-end;
-  width: 1840px;
+  width: 100%;
+  max-width: var(--inner-max);
   margin: 0 auto;
 }
 
@@ -22,7 +23,8 @@
   display: flex;
   flex-direction: column;
   gap: 48px;
-  width: 912px;
+  max-width: 912px;
+  min-width: 0;
 }
 .testi__block--right { align-self: flex-end; }
 

@@ -1,7 +1,9 @@
 .trusted {
-  /* Figma: y=1680, width 1904 (8px side margins) */
-  width: 1904px;
+  /* Figma: y=1680, width 1904 (8px side margins) — fluid, capped + centered */
+  width: 100%;
+  max-width: var(--content-max);
   margin: 8px auto 0;
+  padding-inline: var(--edge);
 }
 
 .trusted__card {

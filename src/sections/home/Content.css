@@ -2,34 +2,46 @@
   position: relative;
   width: 100%;
   margin-top: 240px;
+  /* Responsive left inset for the card rail (Figma x=504 ≈ 26vw at 1920). */
+  --rail-left: clamp(40px, 26vw, 504px);
 }
 
 .content__sticky {
   position: sticky;
   top: 0;
-  /* Divide by --zoom so it still fills the viewport after the page is zoomed. */
-  height: calc(100vh / var(--zoom, 1));
+  height: 100vh;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
+/* Fills the sticky viewport; stacks the card rail + progress slider vertically.
+   `safe center` keeps the block below the header on short windows. */
 .content__viewport {
   position: relative;
-  width: 1920px;
-  height: 1080px;
-  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: safe center;
+  gap: clamp(40px, 8vh, 120px);
+  padding-top: var(--header-h);
 }
 
-/* Card track — starts at x=504, y=222 (Figma) */
+/* Rail = the visible span (viewport minus the left inset and right gutter);
+   its clientWidth drives the JS translate math. Track overflows it and is clipped
+   by the sticky's overflow:hidden. */
+.content__rail {
+  position: relative;
+  align-self: stretch;
+  margin-left: var(--rail-left);
+  margin-right: var(--gutter);
+}
+
 .content__track {
-  position: absolute;
-  left: 504px;
-  top: 222px;
+  position: relative;
   display: flex;
   gap: 170px;
   align-items: flex-start;
+  width: max-content;
   will-change: transform;
 }
 
@@ -132,12 +144,13 @@
   color: var(--text-muted);
 }
 
-/* Progress slider (Figma 1:314) — left 504, bottom 56, width 912 */
+/* Progress slider — aligned with the rail's left inset, capped at 912. */
 .content__slider {
-  position: absolute;
-  left: 504px;
-  bottom: 56px;
-  width: 912px;
+  position: relative;
+  align-self: stretch;
+  margin-left: var(--rail-left);
+  margin-right: var(--gutter);
+  max-width: 912px;
   display: flex;
   align-items: center;
 }

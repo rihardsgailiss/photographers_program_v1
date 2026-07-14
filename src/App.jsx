@@ -1,11 +1,10 @@
-import { useRef, useEffect } from 'react'
+import { useEffect } from 'react'
 import { Routes, Route, Outlet, useLocation } from 'react-router-dom'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import CountryToast from './components/CountryToast.jsx'
 import Home from './pages/Home.jsx'
 import Pricing from './pages/Pricing.jsx'
-import useFitToDesign from './hooks/useFitToDesign.js'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -29,11 +28,8 @@ function Chrome() {
 }
 
 export default function App() {
-  const pageRef = useRef(null)
-  useFitToDesign(pageRef)
-
   return (
-    <div className="page" ref={pageRef}>
+    <div className="page">
       <ScrollToTop />
       <Routes>
         <Route element={<Chrome />}>

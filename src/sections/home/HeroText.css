@@ -1,10 +1,12 @@
 .heroText {
+  max-width: var(--content-max);
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
   gap: 48px;
   align-items: flex-start;
-  /* Figma: Hero text at x=195, y=160 */
-  padding: 160px 40px 0 195px;
+  /* Figma: Hero text at x=195, y=160 — inset collapses toward the gutter when narrow */
+  padding: 160px var(--gutter) 0 clamp(40px, 10vw, 195px);
 }
 
 .heroText__text {
@@ -16,7 +18,8 @@
 
 .heroText__heading {
   margin: 0;
-  width: 1066px;
+  max-width: 1066px;
+  width: 100%;
   overflow: hidden; /* mask for the rise-in reveal */
   font-family: var(--font-display);
   font-weight: 400;
@@ -30,7 +33,8 @@
 }
 
 .heroText__desc {
-  width: 757px;
+  max-width: 757px;
+  width: 100%;
   font-family: var(--font-sans);
   font-size: 18px;
   line-height: 26px;

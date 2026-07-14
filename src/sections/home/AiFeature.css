@@ -1,5 +1,5 @@
 .aifeature {
-  padding: 400px 40px 0;
+  padding: 400px var(--gutter) 0;
 }
 
 .aifeature__inner {
@@ -7,7 +7,8 @@
   flex-direction: column;
   gap: 32px;
   align-items: center;
-  width: 1840px;
+  width: 100%;
+  max-width: var(--inner-max);
   margin: 0 auto;
 }
 
@@ -19,7 +20,8 @@
 }
 .aifeature__heading {
   margin: 0;
-  width: 603px;
+  max-width: 603px;
+  width: 100%;
   font-family: var(--font-display);
   font-weight: 400;
   font-size: 32px;
@@ -30,7 +32,7 @@
 
 .aifeature__box {
   width: 100%;
-  height: 720px;
+  aspect-ratio: 1840 / 720; /* scales with width, keeps proportions */
   border-radius: 16px;
   overflow: hidden;
   background: var(--btn-secondary);
@@ -44,11 +46,15 @@
 .aifeature__tags {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 24px;
 }
 .aifeature__pills {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   padding: 6px;
   border-radius: 9999px;
   background: var(--white);

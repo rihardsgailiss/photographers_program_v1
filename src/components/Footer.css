@@ -1,5 +1,5 @@
 .footer {
-  padding: 80px 40px 40px;
+  padding: 80px var(--gutter) 40px;
   background: var(--page-bg);
 }
 
@@ -7,7 +7,8 @@
   display: flex;
   flex-direction: column;
   gap: 80px;
-  width: 1840px;
+  width: 100%;
+  max-width: var(--inner-max);
   margin: 0 auto;
 }
 
@@ -15,6 +16,8 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 64px 40px;
   width: 100%;
 }
 
@@ -23,7 +26,8 @@
   display: flex;
   flex-direction: column;
   gap: 64px;
-  width: 448px;
+  flex: 1 1 360px;
+  min-width: 0;
 }
 
 .footer__langPill {
@@ -90,14 +94,15 @@
 /* Right link columns */
 .footer__columns {
   display: flex;
-  gap: 40px;
-  width: 1067px;
+  flex-wrap: wrap;
+  gap: 48px 40px;
+  flex: 2 1 520px;
 }
 .footer__col {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  flex: 1 0 0;
+  flex: 1 1 160px; /* wraps to 2x2 when tight */
   min-width: 0;
 }
 .footer__colTitle {
@@ -125,7 +130,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 1840px;
+  flex-wrap: wrap;
+  gap: 16px 40px;
+  width: 100%;
   padding: 32px 0;
   border-top: 1px solid rgba(26, 34, 46, 0.2);
 }

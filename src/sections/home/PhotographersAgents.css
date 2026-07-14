@@ -1,5 +1,7 @@
 .pa {
-  padding: 400px 0 0 40px;
+  /* left edge aligns with the capped content; row bleeds right (carousel) */
+  padding: 400px 0 0;
+  padding-left: max(var(--gutter), calc((100% - var(--content-max)) / 2 + var(--gutter)));
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -7,7 +9,7 @@
 
 .pa__heading {
   margin: 0;
-  width: 603px;
+  max-width: 603px;
   font-family: var(--font-display);
   font-weight: 400;
   font-size: 32px;
@@ -20,7 +22,7 @@
   display: flex;
   gap: 40px;
   overflow-x: auto;
-  padding-right: 40px;
+  padding-right: var(--gutter);
   scroll-behavior: smooth;
   scrollbar-width: none;
 }

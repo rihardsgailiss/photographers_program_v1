@@ -18,6 +18,7 @@ body {
   font-family: var(--font-sans);
   color: var(--dark);
   background: var(--page-bg);
+  overflow-x: clip; /* guard against incidental h-overflow WITHOUT breaking position:sticky */
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -45,17 +46,26 @@ p {
   margin: 0;
 }
 
-/* Fixed 1920 design canvas, centered. Built 1:1 for desktop; on narrower
-   windows the canvas is horizontally scrollable (desktop-only scope). */
+/* Fluid page. Sections cap + center themselves at --content-max; below that they
+   fill the width with responsive gutters (constant type sizes, reflowing layout). */
 .page {
-  width: var(--design-width);
-  margin: 0 auto;
+  width: 100%;
   position: relative;
   background: var(--page-bg);
 }
 
-/* Standard content container: 40px side gutters -> 1840 inner width */
+/* Gutter'd content container: caps at 1920 and centers, ~40px side gutters. */
 .container {
   width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
   padding-inline: var(--gutter);
+}
+
+/* Near-full-bleed container (hero image, trusted, cta band): caps + small edge inset. */
+.bleed {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--edge);
 }
