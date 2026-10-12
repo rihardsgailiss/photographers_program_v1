@@ -12,8 +12,10 @@
   --white: #ffffff;
   --text-muted: rgba(26, 34, 46, 0.65);
   --btn-secondary: #f1f3f3;
+  --accent: #ffe586;        /* signature accent (highlighted card, badges) */
   --page-bg: #f1f1ef;
   --hairline: rgba(26, 34, 46, 0.12);
+  --border: #dcdee0;        /* table / comparison borders */
   --header-scrolled-bg: rgba(255, 255, 255, 0.8);
 
   /* Layout — responsive: constant sizes, fluid widths, capped + centered */

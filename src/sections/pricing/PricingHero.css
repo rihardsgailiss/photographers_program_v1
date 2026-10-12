@@ -1,43 +1,98 @@
 .pricingHero {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  align-items: center;
   width: 100%;
   max-width: var(--content-max);
   margin: 0 auto;
-  padding: 176px var(--gutter) 0;
+  /* clears the sticky site header; matches design section padding (pt/pb) */
+  padding: 140px var(--gutter) 88px;
 }
 
-/* Billing toggle */
-.pricingToggle {
-  display: flex;
-  align-items: center;
-  padding: 6px;
-  border-radius: 9999px;
-  background: var(--white);
-  animation: fadeUp 0.8s var(--ease-out-expo) 0.1s both;
+/* Cards: 4 across on desktop -> 2x2 grid when tight -> stacked on mobile */
+.pricingHero__cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  align-items: stretch;
 }
-.pricingToggle__opt {
+@media (max-width: 1200px) {
+  .pricingHero__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .pricingHero__cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.planCard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 40px;
+  border-radius: 16px;
+  background: var(--white);
+  animation: fadeUp 0.7s var(--ease-out-expo) both;
+}
+.planCard--accent { background: var(--accent); }
+
+.pricingHero__cards > .planCard:nth-child(1) { animation-delay: 0.05s; }
+.pricingHero__cards > .planCard:nth-child(2) { animation-delay: 0.12s; }
+.pricingHero__cards > .planCard:nth-child(3) { animation-delay: 0.19s; }
+.pricingHero__cards > .planCard:nth-child(4) { animation-delay: 0.26s; }
+
+.planCard__title {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.planCard__name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 42px;
+  letter-spacing: -0.16px;
+  color: var(--dark);
+}
+.planCard__desc {
+  margin: 0;
+  max-width: 500px;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-muted);
+}
+
+/* In-card billing switcher (Content Studio & Camera) */
+.planSwitch {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 9999px;
+  background: var(--btn-secondary);
+}
+.planSwitch__opt {
+  flex: 1 1 0;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  padding: 4px 16px;
   border-radius: 9999px;
   font-family: var(--font-sans);
   font-size: 14px;
   line-height: 20px;
-  letter-spacing: -0.035px;
   color: var(--dark);
   transition: background-color 0.2s ease;
 }
-.pricingToggle__opt.is-active { background: var(--btn-secondary); }
-.pricingToggle__badge {
+.planSwitch__opt.is-active { background: var(--white); }
+.planSwitch__badge {
   display: inline-flex;
   align-items: center;
-  padding: 2px 8px;
+  padding: 2px 10px;
   border-radius: 9999px;
-  background: #ffe586;
+  background: var(--accent);
   font-family: var(--font-mono);
   font-size: 12px;
   line-height: 16px;
@@ -45,111 +100,57 @@
   text-transform: uppercase;
   color: var(--dark);
 }
+/* keep the switcher readable on the accent card */
+.planCard--accent .planSwitch { background: rgba(255, 255, 255, 0.5); }
+.planCard--accent .planSwitch__badge { background: var(--white); }
 
-/* Cards */
-.pricingHero__cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  align-items: stretch;
-  width: 100%;
-}
-
-.planCard {
+/* Price — pushed to the bottom so CTAs align across cards */
+.planCard__pricing {
+  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  flex: 1 1 300px; /* 3-up on desktop; wraps when tight */
-  min-width: 300px;
-  min-height: 551px;
-  padding: 32px;
-  border-radius: 16px;
-  overflow: hidden;
-  animation: fadeUp 0.85s var(--ease-out-expo) both;
+  justify-content: flex-end;
+  padding-block: 8px;
 }
-.pricingHero__cards .planCard:nth-child(1) { animation-delay: 0.2s; }
-.pricingHero__cards .planCard:nth-child(2) { animation-delay: 0.32s; }
-.pricingHero__cards .planCard:nth-child(3) { animation-delay: 0.44s; }
-.planCard--white { background: var(--white); }
-.planCard--highlight { background: #ffe586; }
-.planCard--enterprise { justify-content: space-between; }
-
-.planCard__head {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid rgba(26, 34, 46, 0.2);
-}
-.planCard--enterprise .planCard__head {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.planCard__intro {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.planCard__title {
+.planCard__price {
   margin: 0;
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 32px;
-  letter-spacing: -0.12px;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+}
+.planCard__priceValue {
+  font-size: 32px;
+  line-height: 42px;
+  letter-spacing: -0.08px;
   color: var(--dark);
 }
-.planCard__desc {
-  font-family: var(--font-sans);
-  font-size: 18px;
-  line-height: 26px;
+.planCard__priceUnit {
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.04px;
   color: var(--text-muted);
 }
 
-.planCard__price {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  color: var(--dark);
-}
-.planCard__priceValue { font-size: 32px; line-height: 48px; letter-spacing: -0.08px; }
-.planCard__priceUnit { font-size: 16px; line-height: 24px; letter-spacing: -0.04px; }
-
-.planCard__features {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.planCard__feature {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.planCard__check {
+/* CTA button (full width, h48) */
+.planCard__btn {
+  width: 100%;
+  height: 48px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-  border: 1px solid rgba(26, 34, 46, 0.2);
-  border-radius: 9999px;
-  color: var(--ink);
-}
-.planCard__featureText {
-  flex: 1 0 0;
-  min-width: 0;
+  border-radius: 8px;
   font-family: var(--font-sans);
-  font-size: 18px;
-  line-height: 26px;
-  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 20px;
+  transition: filter 0.15s ease;
 }
+.planCard__btn:hover { filter: brightness(0.96); }
+.planCard__btn--dark { background: var(--dark); color: var(--white); }
+.planCard__btn--secondary { background: var(--btn-secondary); color: var(--dark); }
+.planCard--accent .planCard__btn--secondary { background: var(--white); }
 
-.planCard__cta {
-  width: 100%;
-  margin-top: auto;
+@media (prefers-reduced-motion: reduce) {
+  .planCard { animation: none; }
 }
-.planCard--enterprise .planCard__cta { margin-top: 0; }
