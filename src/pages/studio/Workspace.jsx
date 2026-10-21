@@ -4,23 +4,15 @@ import { StudioBar } from '../../layouts/StudioLayout.jsx'
 import StepFrame from '../../components/studio/StepFrame.jsx'
 import StudioField, { FloatInput } from '../../components/studio/StudioField.jsx'
 import { useProgram } from '../../context/ProgramContext.jsx'
-import './Workspace.css'
 
 /* The only onboarding step for a new customer after the camera order: name the workspace.
-   Everything else (name, contact details, industry) is already known from the application. */
+   Everything else is already known from the application and editable later in settings. */
 export default function Workspace() {
   const navigate = useNavigate()
   const { profile, signup, updateSignup } = useProgram()
   const [org, setOrg] = useState(signup.orgName || `${profile.lastName} Photography`.trim())
   const [error, setError] = useState('')
 
-  const known = [
-    ['Name', profile.fullName],
-    ['Email', profile.email],
-    ['Phone', profile.phone],
-    ['Country', profile.country],
-    ['Industry', profile.industry],
-  ]
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -60,14 +52,6 @@ export default function Workspace() {
           />
         </StudioField>
 
-        <div className="workspace__known">
-          <p className="workspace__knownTitle">Already set up from your application</p>
-          <dl className="workspace__list">
-            {known.map(([k, v]) => (
-              <div className="workspace__row" key={k}>
-                <dt>{k}</dt>
-                <dd>{v}</dd>
-              </div>
             ))}
           </dl>
           <p className="st-small">You can change any of these later in your settings.</p>
