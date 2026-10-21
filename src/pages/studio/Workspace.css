@@ -1,0 +1,29 @@
+.workspace__known {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border-radius: var(--st-radius-lg);
+  background: var(--st-soft);
+}
+.workspace__knownTitle {
+  margin: 0;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 18px;
+}
+.workspace__list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.workspace__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 13px;
+  line-height: 18px;
+}
+.workspace__row dt { color: var(--st-muted); flex: none; }
+.workspace__row dd { margin: 0; text-align: right; font-weight: 600; min-width: 0; overflow-wrap: anywhere; }

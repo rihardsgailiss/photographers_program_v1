@@ -12,7 +12,7 @@ import PhotographerProgram from './pages/PhotographerProgram.jsx'
 import ApprovalEmail from './pages/ApprovalEmail.jsx'
 import Login from './pages/studio/Login.jsx'
 import EmailCode from './pages/studio/EmailCode.jsx'
-import SignupStep from './pages/studio/SignupStep.jsx'
+import Workspace from './pages/studio/Workspace.jsx'
 import CameraOrder from './pages/studio/CameraOrder.jsx'
 import Projects from './pages/studio/Projects.jsx'
 import OrgSettings from './pages/studio/OrgSettings.jsx'
@@ -59,7 +59,8 @@ export default function App() {
         <Route element={<StudioLayout />}>
           <Route path="/signup/login" element={<Login />} />
           <Route path="/signup/code" element={<EmailCode />} />
-          <Route path="/signup/step/:n" element={<SignupStep />} />
+          <Route path="/signup/workspace" element={<Workspace />} />
+          <Route path="/signup/step/*" element={<Navigate to="/signup/workspace" replace />} />
           <Route path="/signup/order" element={<CameraOrder />} />
           <Route path="/signup" element={<Navigate to="/signup/login" replace />} />
         </Route>

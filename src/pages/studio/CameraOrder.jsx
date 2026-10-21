@@ -85,7 +85,7 @@ export default function CameraOrder() {
 
     placeOrder({ delivery, billingSame, billing: billingSame ? delivery : billing })
     // New accounts set up their workspace next; existing accounts are upgraded in place.
-    navigate(account === 'new' ? '/signup/step/1' : '/studio/organisation/photographer-program')
+    navigate(account === 'new' ? '/signup/workspace' : '/studio/organisation/photographer-program')
   }
 
   return (
@@ -183,7 +183,7 @@ export default function CameraOrder() {
             <div className="order__actions">
               <button type="submit" className="st-btn st-btn--primary order__submit">Order my camera · $0</button>
               <span className="st-small">
-                {account === 'new' ? 'Next: set up your workspace in a minute.' : 'Next: your Photographer program page.'}
+                {account === 'new' ? 'Next: name your workspace and you are in.' : 'Next: your Photographer program page.'}
               </span>
             </div>
             <button type="button" className="st-protoBtn" onClick={autofill}>

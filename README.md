@@ -21,7 +21,7 @@ opened directly with demo defaults.
 2. `/email/approved` — mock approval email from customer support (prototype-only page)
 3. `/signup/login` — Content Studio log in (email prefilled from the link) → `/signup/code` — email code (any 6 digits)
 4. `/signup/order` — card on file ($0), delivery and billing address (comes first: the order starts the program)
-5. `/signup/step/1…5` — sign-up steps, prefilled from the application (new accounts only)
+5. `/signup/workspace` — new accounts only: name the workspace (everything else is known from the application)
 6. `/studio/organisation/photographer-program` — Organisation settings → Photographer program tab (replaces Billing; day-one state)
 7. `/studio/projects` — Content Studio dashboard, example project page
 
@@ -33,7 +33,7 @@ The prototype map (yellow dot, top-left) switches the account type: new user (we
 account (Free, no Billing tab; upgrades only via the sidebar's Manage plan) or Content Studio Plus
 (paid; Organisation settings → Billing → Manage plan). `/studio/plan` shows the same Agent /
 Photographer split as the website; Apply opens the application form prefilled from the account.
-After the approval email, the log-in goes to the camera order; existing accounts skip the sign-up steps.
+After the approval email, the log-in goes to the camera order; existing accounts skip the workspace step.
 Once the camera is ordered, Photographer program replaces Billing in Organisation settings.
 
 ## Highlights

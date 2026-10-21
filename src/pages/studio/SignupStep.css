@@ -1,2 +1,0 @@
-/* Steps use the shared StepFrame; only the radio-list step needs a tighter gap. */
-.stepFrame .radioList + .st-note { margin-top: 12px; }
