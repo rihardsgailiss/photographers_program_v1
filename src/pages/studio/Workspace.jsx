@@ -51,11 +51,6 @@ export default function Workspace() {
             }}
           />
         </StudioField>
-
-            ))}
-          </dl>
-          <p className="st-small">You can change any of these later in your settings.</p>
-        </div>
       </StepFrame>
     </>
   )
