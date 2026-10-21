@@ -47,7 +47,7 @@ function AddressFields({ prefix, value, onChange, errors }) {
    stay in component state only. */
 export default function CameraOrder() {
   const navigate = useNavigate()
-  const { placeOrder } = useProgram()
+  const { placeOrder, account } = useProgram()
   const [card, setCard] = useState({ number: '', expiry: '', cvc: '' })
   const [delivery, setDelivery] = useState(EMPTY_ADDRESS)
   const [billingSame, setBillingSame] = useState(true)
@@ -79,7 +79,8 @@ export default function CameraOrder() {
     if (Object.keys(errs).length) return
 
     placeOrder({ delivery, billingSame, billing: billingSame ? delivery : billing })
-    navigate('/studio/organisation/photographer-program')
+    // New accounts set up their workspace next; existing accounts are upgraded in place.
+    navigate(account === 'new' ? '/signup/step/1' : '/studio/organisation/photographer-program')
   }
 
   return (
@@ -88,7 +89,11 @@ export default function CameraOrder() {
       <StepFrame
         eyebrow="Photographer program"
         title="Order your free Gen5 camera"
-        intro="Total $0. Your camera ships, your partner link goes live and your 6 months start when you order."
+        intro={
+          account === 'new'
+            ? 'Total $0. Your camera ships, your partner link goes live and your 6 months start when you order. You set up your workspace right after.'
+            : 'Total $0. Your camera ships, your partner link goes live and your 6 months start when you order.'
+        }
         onSubmit={onSubmit}
         nextLabel="Order camera · $0"
         footer={

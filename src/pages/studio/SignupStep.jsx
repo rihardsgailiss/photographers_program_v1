@@ -36,13 +36,13 @@ function Step({ step }) {
   const [last, setLast] = useState(profile.lastName)
   const [industry, setIndustry] = useState(profile.industry)
   const [heard, setHeard] = useState(signup.heardAbout)
-  const [org, setOrg] = useState(signup.orgName)
+  const [org, setOrg] = useState(signup.orgName || `${profile.lastName} Photography`.trim())
   const [country, setCountry] = useState(signup.country || profile.country)
   const [phone, setPhone] = useState(signup.phone || profile.phone)
   const [invites, setInvites] = useState(signup.invites)
   const [errors, setErrors] = useState({})
 
-  const go = (next) => navigate(next < 6 ? `/signup/step/${next}` : '/signup/order')
+  const go = (next) => navigate(next < 6 ? `/signup/step/${next}` : '/studio/organisation/photographer-program')
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -76,6 +76,7 @@ function Step({ step }) {
       <StepFrame
         step={step}
         title={TITLES[step - 1]}
+        intro={step === 1 ? 'Your camera is ordered. A few details to set up your Content Studio workspace.' : undefined}
         onSubmit={onSubmit}
         nextLabel={step === 5 && !invites.trim() ? 'Skip' : 'Next'}
       >
@@ -104,7 +105,7 @@ function Step({ step }) {
 
         {step === 4 && (
           <>
-            <StudioField id="org" helper="Usually your company or team name" error={errors.org}>
+            <StudioField id="org" helper="Usually your company or team name" error={errors.org} note="Suggested from your application – you can change it">
               <FloatInput id="org"  label="Organisation name" autoComplete="organization" value={org} onChange={(e) => setOrg(e.target.value)} />
             </StudioField>
             <StudioField id="country">

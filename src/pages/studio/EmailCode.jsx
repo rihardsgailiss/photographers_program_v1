@@ -17,19 +17,15 @@ export default function EmailCode() {
       navigate('/studio/organisation/photographer-program')
       return
     }
-    if (account !== 'new') {
-      // Existing account (demo or paid): no sign-up steps. Approved applicants go straight to the
-      // camera order; everyone else lands in Content Studio.
-      if (status === 'submitted') {
-        setStatus('loggedIn')
-        navigate('/signup/order')
-      } else {
-        navigate('/studio/projects')
-      }
+    if (account !== 'new' && status !== 'submitted') {
+      // Existing account that has not applied: plain log-in lands in Content Studio.
+      navigate('/studio/projects')
       return
     }
+    // Approved applicant (new or existing account): the camera order comes first. New accounts
+    // then set up their workspace in the sign-up steps.
     setStatus('loggedIn')
-    navigate('/signup/step/1')
+    navigate('/signup/order')
   })
 
   useEffect(() => {

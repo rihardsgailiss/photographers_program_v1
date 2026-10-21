@@ -24,12 +24,12 @@ const GROUPS = [
     items: [
       { label: 'Log in', to: '/signup/login', match: (p) => p === '/signup/login' },
       { label: 'Email code', to: '/signup/code' },
+      { label: 'Order the camera', to: '/signup/order' },
       { label: 'Step 1 · Name', to: '/signup/step/1' },
       { label: 'Step 2 · Industry', to: '/signup/step/2' },
       { label: 'Step 3 · Heard about us', to: '/signup/step/3' },
       { label: 'Step 4 · Workspace', to: '/signup/step/4' },
       { label: 'Step 5 · Invite coworkers', to: '/signup/step/5' },
-      { label: 'Order the camera', to: '/signup/order' },
       { label: 'Dashboard · Projects', to: '/studio/projects' },
       { label: 'Manage your plan (in-app upgrade)', to: '/studio/plan' },
       { label: 'Organisation · Billing (paid plans)', to: '/studio/organisation/billing' },
