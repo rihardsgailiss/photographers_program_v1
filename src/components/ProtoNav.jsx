@@ -92,7 +92,7 @@ export default function ProtoNav() {
           </div>
 
           <div className="protoNav__group">
-            <span className="protoNav__groupTitle">Account</span>
+            <span className="protoNav__groupTitle">Account · switching restarts the flow</span>
             <div className="protoNav__accounts" role="radiogroup" aria-label="Prototype account type">
               {Object.entries(ACCOUNTS).map(([id, a]) => (
                 <button
@@ -101,7 +101,11 @@ export default function ProtoNav() {
                   role="radio"
                   aria-checked={account === id}
                   className={`protoNav__account${account === id ? ' is-active' : ''}`}
-                  onClick={() => setAccount(id)}
+                  onClick={() => {
+                    setAccount(id)
+                    setOpen(false)
+                    navigate(id === 'new' ? '/photographer-program' : '/studio/projects')
+                  }}
                 >
                   {a.label}
                 </button>

@@ -89,8 +89,8 @@ export function ProgramProvider({ children }) {
     }))
   }, [])
 
-  /* Prototype: switch the account type (new / demo / paid) without losing the flow state. */
-  const setAccount = useCallback((account) => setState((s) => ({ ...s, account })), [])
+  /* Prototype: switch the account type (new / demo / paid). Starts that account's flow afresh. */
+  const setAccount = useCallback((account) => setState({ ...INITIAL, account }), [])
 
   /* Reset the flow but keep the chosen account type. */
   const reset = useCallback(() => setState((s) => ({ ...INITIAL, account: s.account })), [])
