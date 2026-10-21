@@ -33,17 +33,17 @@ function PlusMinus({ open }) {
   )
 }
 
-export default function Faq() {
+export default function Faq({ title = 'Frequently asked questions', items = ITEMS, compact = false }) {
   const [open, setOpen] = useState(0)
 
   return (
-    <section className="faq">
-      <h2 className="faq__title">Frequently asked questions</h2>
+    <section className={`faq`}>
+      <h2 className="faq__title">{title}</h2>
       <div className="faq__list">
-        {ITEMS.map((item, i) => {
+        {items.map((item, i) => {
           const isOpen = open === i
           return (
-            <div className={`faq__item${i === ITEMS.length - 1 ? ' faq__item--last' : ''}`} key={item.q}>
+            <div className={`faq__item${i === items.length - 1 ? ' faq__item--last' : ''}`} key={item.q}>
               <button
                 className="faq__q"
                 type="button"

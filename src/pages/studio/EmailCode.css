@@ -1,0 +1,25 @@
+.code {
+  padding-top: 176px;
+  animation: fadeUp 0.5s var(--ease-out-expo) both;
+}
+.code__sub { margin-top: 16px; }
+.code__sub strong { color: var(--st-text); font-weight: 700; }
+.code__boxes {
+  display: flex;
+  gap: 14px;
+  margin: 32px 0 48px;
+}
+.code__box {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+}
+.code__resend { color: var(--st-muted); }
+.code__resendBtn { font: inherit; color: var(--st-text); }
+.code__hint {
+  margin-top: 40px;
+  color: var(--st-faint);
+}

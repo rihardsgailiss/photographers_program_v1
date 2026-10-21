@@ -54,7 +54,7 @@ export default function Header() {
         </nav>
 
         <div className="header__ctas">
-          <a href="#" className="header__link header__login">Log in</a>
+          <Link to="/signup/login" className="header__link header__login">Log in</Link>
           <div className="header__buttons">
             <button className="btn btn--primary" type="button">Free demo</button>
             <button

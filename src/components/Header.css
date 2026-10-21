@@ -113,3 +113,9 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Pages with a dark hero (Photographer program): white nav until the frosted bar appears. */
+body.page--darkHero .header:not(.header--scrolled) .header__link { color: var(--white); }
+body.page--darkHero .header:not(.header--scrolled) .header__link:hover { background: rgba(255, 255, 255, 0.1); }
+body.page--darkHero .header:not(.header--scrolled) .header__logo img { filter: brightness(0) invert(1); }
+.header__logo img { transition: filter 0.35s ease; }

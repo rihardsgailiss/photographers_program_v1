@@ -74,3 +74,9 @@
   line-height: 26px;
   color: var(--text-muted);
 }
+
+/* Landing-page variant: sits right after other sections instead of 400px below the table. */
+.faq--compact {
+  margin-top: 120px;
+  padding-bottom: 160px;
+}

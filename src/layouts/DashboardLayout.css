@@ -1,0 +1,14 @@
+.dash {
+  display: grid;
+  grid-template-columns: var(--st-sidebar-w) minmax(0, 1fr);
+  min-height: 100vh;
+  background: #fff;
+}
+.dash__main {
+  min-width: 0;
+  padding: 56px 56px 96px;
+}
+@media (max-width: 900px) {
+  .dash { grid-template-columns: 1fr; }
+  .dash__main { padding: 32px 24px 64px; }
+}

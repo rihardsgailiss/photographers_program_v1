@@ -1,0 +1,33 @@
+.stepFrame {
+  display: flex;
+  flex-direction: column;
+  animation: fadeUp 0.5s var(--ease-out-expo) both;
+}
+.stepFrame__label { margin: 0 0 8px; }
+.stepFrame__title { margin: 0 0 24px; }
+.stepFrame__intro { margin: -8px 0 24px; }
+.stepFrame__form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.stepFrame__actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* Prototype helper button (e.g. autofill) */
+.st-protoBtn {
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 4px 10px;
+  border: 1px dashed var(--st-border);
+  border-radius: var(--st-radius);
+  font-family: 'Google Sans Code', ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--st-faint);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.st-protoBtn:hover { color: var(--st-text); border-color: var(--st-text); }

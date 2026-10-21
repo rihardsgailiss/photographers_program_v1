@@ -1,0 +1,315 @@
+/* Content Studio (product) theme — scoped under .studio so website tokens stay untouched.
+   Matches the Figma log-in / sign-up spec: white page, yellow CTAs, 4px radii, 50px inputs. */
+
+.studio {
+  --st-font: 'Google Sans Flex', system-ui, sans-serif;
+  --st-text: #1a222e;
+  --st-muted: #5b6572;
+  --st-faint: #8a929c;
+  --st-border: #dcdee0;
+  --st-border-strong: #b9bec5;
+  --st-yellow: #ffc600;
+  --st-yellow-hover: #f2bc00;
+  --st-yellow-tint: #fff8d9;
+  --st-soft: #f4f5f6;
+  --st-green: #1f8a4c;
+  --st-green-bg: #e3f3e9;
+  --st-amber: #a16a00;
+  --st-amber-bg: #fff1c2;
+  --st-red: #c23b2c;
+  --st-red-bg: #fce8e5;
+  --st-radius: 4px;
+  --st-radius-lg: 8px;
+  --st-input-h: 50px;
+  --st-col: 410px;
+  --st-bar-h: 64px;
+  --st-sidebar-w: 215px;
+
+  min-height: 100vh;
+  font-family: var(--st-font);
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--st-text);
+  background: #fff;
+}
+
+.studio input,
+.studio select,
+.studio textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* ---- type ---- */
+.st-h1 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.2px;
+  color: var(--st-text);
+}
+.st-h2 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--st-text);
+}
+.st-h3 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--st-text);
+}
+.st-p { margin: 0; font-size: 16px; line-height: 24px; color: var(--st-muted); }
+.st-small { font-size: 13px; line-height: 18px; color: var(--st-muted); }
+.st-eyebrow { font-size: 16px; line-height: 24px; color: var(--st-muted); }
+.st-link { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
+/* ---- fields ---- */
+.st-field { display: flex; flex-direction: column; gap: 6px; }
+.st-field__label {
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--st-muted);
+}
+.st-input,
+.st-select {
+  width: 100%;
+  height: var(--st-input-h);
+  padding: 0 16px;
+  border: 1px solid var(--st-border);
+  border-radius: var(--st-radius);
+  background: #fff;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--st-text);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.st-input::placeholder { color: var(--st-faint); }
+.st-input:focus,
+.st-select:focus {
+  outline: none;
+  border-color: var(--st-text);
+  box-shadow: 0 0 0 3px rgba(255, 198, 0, 0.35);
+}
+.st-input[readonly] { background: var(--st-soft); }
+.st-select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 44px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231a222e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+}
+/* Select with an inner label (Figma "Country / United Kingdom") */
+.st-selectWrap { position: relative; }
+.st-selectWrap__label {
+  position: absolute;
+  top: 8px;
+  left: 17px;
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--st-muted);
+  pointer-events: none;
+}
+.st-selectWrap .st-select {
+  height: 56px;
+  padding-top: 20px;
+}
+.st-helper { font-size: 13px; line-height: 18px; color: var(--st-muted); }
+.st-error { font-size: 13px; line-height: 18px; color: var(--st-red); }
+.st-field--invalid .st-input,
+.st-field--invalid .st-select { border-color: var(--st-red); }
+.st-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-left: 2px solid var(--st-yellow);
+  background: var(--st-yellow-tint);
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--st-muted);
+}
+
+/* Phone input with country prefix */
+.st-phone { display: flex; }
+.st-phone__prefix {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: var(--st-input-h);
+  padding: 0 16px;
+  border: 1px solid var(--st-border);
+  border-right: none;
+  border-radius: var(--st-radius) 0 0 var(--st-radius);
+  background: #fff;
+  white-space: nowrap;
+}
+.st-phone .st-input { border-radius: 0 var(--st-radius) var(--st-radius) 0; }
+
+/* ---- choice controls ---- */
+.st-radio,
+.st-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--st-text);
+}
+.st-radio { min-height: 35px; align-items: center; }
+.st-radio input,
+.st-check input {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 1px solid var(--st-border-strong);
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+.st-check input { margin-top: 2px; border-radius: 4px; }
+.st-radio input { border-radius: 50%; }
+.st-radio input:checked {
+  border: 6px solid var(--st-yellow);
+}
+.st-check input:checked {
+  border-color: var(--st-text);
+  background: var(--st-text)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l5 5 9.5-10.5'/%3E%3C/svg%3E")
+    center / 14px no-repeat;
+}
+.st-radio input:focus-visible,
+.st-check input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 198, 0, 0.35);
+}
+.st-check--small { font-size: 14px; line-height: 20px; }
+
+/* ---- buttons ---- */
+.st-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 24px;
+  border-radius: var(--st-radius);
+  font-family: var(--st-font);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--st-text);
+  white-space: nowrap;
+  transition: background-color 0.15s ease, border-color 0.15s ease, filter 0.15s ease;
+}
+.st-btn--primary { background: var(--st-yellow); }
+.st-btn--primary:hover { background: var(--st-yellow-hover); }
+.st-btn--outline { background: #fff; border: 1px solid var(--st-border); }
+.st-btn--outline:hover { border-color: var(--st-border-strong); background: var(--st-soft); }
+.st-btn--dark { background: var(--st-text); color: #fff; }
+.st-btn--dark:hover { filter: brightness(1.15); }
+.st-btn--block { width: 100%; }
+.st-btn--next { min-width: 140px; }
+.st-btn:disabled { opacity: 0.5; cursor: default; }
+.st-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(26, 34, 46, 0.25); }
+
+/* ---- status pills ---- */
+.st-pill {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.st-pill--ok { background: var(--st-green-bg); color: var(--st-green); }
+.st-pill--warn { background: var(--st-amber-bg); color: var(--st-amber); }
+.st-pill--bad { background: var(--st-red-bg); color: var(--st-red); }
+.st-pill--neutral { background: var(--st-soft); color: var(--st-muted); }
+.st-pill--accent { background: var(--st-yellow-tint); color: var(--st-amber); }
+
+/* ---- top bar (log-in / sign-up screens) ---- */
+.studioBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--st-bar-h);
+  padding: 0 24px;
+}
+.studioBar__logo { display: inline-flex; align-items: center; }
+.studioBar__logo img { width: 104px; height: auto; }
+.studioBar__back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  color: var(--st-text);
+  transition: background-color 0.15s ease;
+}
+.studioBar__back:hover { background: var(--st-soft); }
+.studioBar__lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px 0 16px;
+  border: 1px solid var(--st-border);
+  border-radius: var(--st-radius);
+  background: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--st-text);
+}
+.studioBar__lang:hover { background: var(--st-soft); }
+
+/* Centred single-column screens (email code, steps, order) */
+.studioCol {
+  width: 100%;
+  max-width: var(--st-col);
+  margin: 0 auto;
+  padding: 120px 24px 96px;
+}
+.studioCol--wide { max-width: 560px; }
+
+/* Floating label inputs */
+.st-float { position: relative; flex: 1 1 auto; min-width: 0; }
+.st-float__input {
+  height: 56px;
+  padding-top: 20px;
+}
+.st-float__label {
+  position: absolute;
+  left: 17px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--st-faint);
+  pointer-events: none;
+  transition: top 0.15s ease, transform 0.15s ease, font-size 0.15s ease, color 0.15s ease;
+}
+.st-float__input:focus ~ .st-float__label,
+.st-float__input:not(:placeholder-shown) ~ .st-float__label {
+  top: 8px;
+  transform: none;
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--st-muted);
+}
+.st-phone .st-float__input { border-radius: 0 var(--st-radius) var(--st-radius) 0; }
+.st-phone__prefix { height: 56px; }

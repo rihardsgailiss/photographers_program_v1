@@ -59,7 +59,14 @@
   .heroText__cta,
   .heroImage,
   .pricingToggle,
-  .pricingHero__cards .planCard {
+  .pricingHero__cards .planCard,
+  .programHero__eyebrow,
+  .programHero__reveal,
+  .programHero__sub,
+  .programHero__facts,
+  .programHero__card,
+  .appConfirm,
+  .modal__panel {
     animation: none !important;
   }
 }

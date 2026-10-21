@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { ArrowOutward } from './icons/index.jsx'
 import './Footer.css'
 
@@ -17,7 +18,15 @@ const COLUMNS = [
     ],
   },
   { title: 'Company', links: ['About', 'Contacts', 'Newsroom', 'Careers'] },
-  { title: 'Industries', links: ['Photographers & media providers', 'Real estate agents', 'Brokerages & teams'] },
+  {
+    title: 'Industries',
+    links: [
+      'Photographers & media providers',
+      'Real estate agents',
+      'Brokerages & teams',
+      { label: 'Photographers program', to: '/photographer-program' },
+    ],
+  },
   { title: 'Legal', links: ['Privacy policy', 'Terms of service', 'Accessibility statement', 'Cookie notice'] },
 ]
 
@@ -56,9 +65,13 @@ export default function Footer() {
               <div key={col.title} className="footer__col">
                 <span className="footer__colTitle">{col.title}</span>
                 <div className="footer__colLinks">
-                  {col.links.map((link) => (
-                    <a key={link} href="#" className="footer__colLink">{link}</a>
-                  ))}
+                  {col.links.map((link) =>
+                    typeof link === 'object' ? (
+                      <Link key={link.label} to={link.to} className="footer__colLink">{link.label}</Link>
+                    ) : (
+                      <a key={link} href="#" className="footer__colLink">{link}</a>
+                    ),
+                  )}
                 </div>
               </div>
             ))}

@@ -1,0 +1,84 @@
+/* Website form primitives (landing application form, modal form). */
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.field__label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text-muted);
+}
+.field__input,
+.field__select {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  font: inherit;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--dark);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.field__input::placeholder { color: rgba(26, 34, 46, 0.4); }
+.field__input:focus,
+.field__select:focus {
+  outline: none;
+  border-color: var(--dark);
+  box-shadow: 0 0 0 3px rgba(255, 198, 0, 0.35);
+}
+.field__select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 44px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231a222e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+}
+.field__select:invalid,
+.field__select.is-placeholder { color: rgba(26, 34, 46, 0.4); }
+.field--invalid .field__input,
+.field--invalid .field__select { border-color: #c23b2c; }
+.field__error {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 18px;
+  color: #c23b2c;
+}
+
+.field--check {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--dark);
+}
+.field--check input {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--white);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+.field--check input:checked {
+  border-color: var(--dark);
+  background: var(--dark)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l5 5 9.5-10.5'/%3E%3C/svg%3E")
+    center / 14px no-repeat;
+}
+.field--check input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 198, 0, 0.35);
+}
+.field--check.field--invalid input { border-color: #c23b2c; }
+.field--check a { text-decoration: underline; text-underline-offset: 2px; }

@@ -1,0 +1,55 @@
+.appForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: var(--dark);
+}
+.appForm__head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.appForm__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 36px;
+  letter-spacing: -0.14px;
+}
+.appForm__sub {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--text-muted);
+}
+.appForm__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.appForm__full { grid-column: 1 / -1; }
+.appForm__consentError { display: block; margin-top: 4px; }
+.appForm__submit {
+  width: 100%;
+  height: 48px;
+  font-size: 16px;
+}
+@media (max-width: 480px) {
+  .appForm__grid { grid-template-columns: 1fr; }
+}
+
+/* Prototype helper: fills the form with demo details */
+.appForm__autofill {
+  align-self: center;
+  margin-top: -8px;
+  padding: 4px 10px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-muted);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.appForm__autofill:hover { color: var(--dark); border-color: var(--dark); }

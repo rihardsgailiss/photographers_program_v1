@@ -1,0 +1,71 @@
+.billing { display: flex; flex-direction: column; gap: 40px; max-width: 1270px; }
+.billing__top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.billing__plan,
+.billing__usage {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+}
+.billing__planHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.billing__price { margin: 0; font-size: 14px; color: var(--st-muted); }
+.billing__price strong { font-size: 18px; color: var(--st-text); }
+.billing__rows { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.billing__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 20px;
+}
+.billing__row--break { padding-top: 12px; border-top: 1px solid var(--st-border); }
+.billing__row dd { margin: 0; font-weight: 700; }
+.billing__manage { align-self: flex-start; }
+.billing__usageRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--st-border);
+}
+.billing__usageLabel { margin: 0; font-size: 15px; }
+.billing__usageFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.billing__usageFoot .st-small { text-align: right; }
+.billing__breakdown { height: 36px; background: var(--st-soft); border-color: transparent; }
+.billing__invoicesHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.billing__filter { width: 140px; height: 40px; }
+.billing__right { text-align: right; }
+.billing__dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.billing__dot--current { background: var(--st-yellow); }
+.billing__dot--paid { background: #8fd19e; }
+@media (max-width: 1000px) {
+  .billing__top { grid-template-columns: 1fr; }
+}
